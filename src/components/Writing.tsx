@@ -46,7 +46,7 @@ export default function Writing() {
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="text-muted text-[13px] leading-relaxed mb-4 font-mono uppercase tracking-widest">
-              — Topics I'm working through:
+              — Topics I&apos;m working through:
             </p>
             <ul className="space-y-3">
               {[

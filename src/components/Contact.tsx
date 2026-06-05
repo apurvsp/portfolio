@@ -39,12 +39,12 @@ export default function Contact() {
               className="font-black tracking-tight leading-[0.9] text-primary mb-6"
               style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
             >
-              Let's
+              Let&apos;s
               <br />
               talk.
             </h2>
             <p className="text-secondary text-[14px] leading-relaxed max-w-sm">
-              Whether you're building something interesting, want to compare notes on markets, or are looking for a collaborator — my inbox is open.
+              Whether you&apos;re building something interesting, want to compare notes on markets, or are looking for a collaborator — my inbox is open.
             </p>
           </motion.div>
 
