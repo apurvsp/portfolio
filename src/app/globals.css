@@ -4,16 +4,17 @@
 
 :root {
   color-scheme: dark;
-  --bg: #090909;
-  --surface: #0f0f0f;
-  --surface-raised: #141414;
-  --border: #1a1a1a;
-  --border-subtle: #131313;
-  --text-primary: #eeebe4;
-  --text-secondary: #7a7a7a;
-  --text-muted: #3a3a3a;
-  --accent: #c8a87a;
-  --accent-dim: rgba(200, 168, 122, 0.08);
+  --bg: #0c0b09;
+  --surface: #131210;
+  --surface2: #1a1916;
+  --border: #252320;
+  --border2: #302e2b;
+  --text: #e2ddd5;
+  --text2: #9c9590;
+  --text3: #5c5853;
+  --gold: #c8a96a;
+  --gold2: #a07840;
+  --green: #4a7c59;
 }
 
 html {
@@ -22,14 +23,14 @@ html {
 
 body {
   background-color: var(--bg);
-  color: var(--text-primary);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: rgba(200, 168, 122, 0.25);
-  color: #eeebe4;
+  background-color: rgba(200, 169, 106, 0.25);
+  color: var(--text);
 }
 
 ::-webkit-scrollbar {
@@ -39,12 +40,15 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #222;
+  background: var(--border2);
   border-radius: 2px;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .font-serif {
+    font-family: var(--font-garamond), Georgia, serif;
   }
 }

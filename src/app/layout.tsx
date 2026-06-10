@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { EB_Garamond } from "next/font/google";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -7,48 +8,56 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://apurvpatil.vercel.app";
+const garamond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-garamond",
+});
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://apurvpatil.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Apurv Patil — Operator. Builder. Investor.",
+    default: "Apurv Patil — Product · Finance · Manufacturing",
     template: "%s | Apurv Patil",
   },
   description:
-    "Building at the intersection of finance and software. Ex-JPMorgan product, now building tools that give investors the edge previously reserved for quant desks.",
+    "Operator at the intersection of product, finance, and manufacturing. Ventures in fiberglass doors, precision manufacturing, and AI-native content.",
   keywords: [
     "Apurv Patil",
-    "fintech",
-    "software engineer",
-    "product manager",
-    "investor",
-    "JPMorgan",
-    "options",
-    "DCF",
-    "NSE",
+    "finance",
+    "manufacturing",
+    "M&A",
+    "private equity",
+    "India",
+    "Patson Doors",
+    "Polychem",
   ],
   authors: [{ name: "Apurv Patil", url: siteUrl }],
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: "Apurv Patil",
-    title: "Apurv Patil — Operator. Builder. Investor.",
+    title: "Apurv Patil — Product · Finance · Manufacturing",
     description:
-      "Building at the intersection of finance and software. Ex-JPMorgan product, now building tools that give investors the edge previously reserved for quant desks.",
+      "Operator at the intersection of product, finance, and manufacturing.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apurv Patil — Operator. Builder. Investor.",
+    title: "Apurv Patil — Product · Finance · Manufacturing",
     description:
-      "Building at the intersection of finance and software. Ex-JPMorgan product, now building tools that give investors the edge previously reserved for quant desks.",
+      "Operator at the intersection of product, finance, and manufacturing.",
   },
   robots: {
     index: true,
@@ -66,12 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${garamond.variable} ${geistSans.variable} ${geistMono.variable}`}>
+      <body className="antialiased font-sans bg-bg text-text">{children}</body>
     </html>
   );
 }
