@@ -91,7 +91,7 @@ export default function Chrome() {
             className="flex items-baseline gap-3 group"
           >
             <span className="font-serif text-[19px] text-text leading-none group-hover:text-gold transition-colors duration-300">
-              Apurv&thinsp;/&thinsp;Patil
+              Apurv Patil
             </span>
             <span className="hidden sm:block font-mono text-[9px] uppercase tracking-[0.3em] text-text3">
               Product · Finance · Manufacturing
@@ -204,34 +204,6 @@ export default function Chrome() {
         )}
       </AnimatePresence>
 
-      {/* ── Left chapter rail (desktop) ── */}
-      <div className="hidden xl:flex fixed left-0 top-0 bottom-0 w-[68px] z-[70] flex-col items-center justify-center gap-5 border-r border-border bg-[rgba(10,9,8,0.5)]">
-        {CHAPTERS.map((c) => (
-          <button
-            key={c.id}
-            onClick={() => go(c.id)}
-            className="group relative flex items-center justify-center"
-            aria-label={c.label}
-          >
-            <span
-              className={`font-mono text-[10px] tracking-[0.15em] transition-all duration-300 ${
-                active === c.id
-                  ? "text-gold"
-                  : "text-text3 group-hover:text-text2"
-              }`}
-            >
-              {c.num}
-            </span>
-            {active === c.id && (
-              <motion.span
-                layoutId="rail-dot"
-                className="absolute -right-[13px] w-[3px] h-[18px] bg-gold"
-                transition={{ duration: 0.4, ease: EASE }}
-              />
-            )}
-          </button>
-        ))}
-      </div>
     </>
   );
 }

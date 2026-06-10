@@ -66,22 +66,9 @@ export default function About() {
             </div>
           </Reveal>
 
-          {/* Portrait + fact ledger */}
+          {/* Fact ledger */}
           <Reveal delay={0.12}>
             <div>
-              <div className="relative w-full max-w-[280px] aspect-[4/5] overflow-hidden border border-border2 photo-tone mb-8">
-                <Image
-                  src="/photos/profile.jpg"
-                  alt="Apurv Patil"
-                  fill
-                  className="object-cover object-center"
-                  sizes="280px"
-                />
-                <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[rgba(10,9,8,0.85)] to-transparent px-4 pb-3 pt-10 font-mono text-[9px] uppercase tracking-[0.3em] text-text2">
-                  The operator
-                </span>
-              </div>
-
               <div>
                 {facts.map((fact, i) => (
                   <motion.div

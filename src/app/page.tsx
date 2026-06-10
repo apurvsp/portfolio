@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-bg">
       <Chrome />
-      <main className="xl:pl-[68px]">
+      <main>
         <Hero />
         <Ticker />
         <About />

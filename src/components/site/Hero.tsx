@@ -21,7 +21,8 @@ const roles = [
 ];
 
 const tags = [
-  { label: "M&A · Private Equity", highlighted: true },
+  { label: "AI Product Management", highlighted: true },
+  { label: "M&A · Private Equity", highlighted: false },
   { label: "Manufacturing", highlighted: true },
   { label: "Financial Modelling", highlighted: false },
   { label: "Software Tools", highlighted: false },

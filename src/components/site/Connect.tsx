@@ -101,17 +101,6 @@ export default function Connect() {
           </div>
         </Reveal>
 
-        {/* Giant outlined email */}
-        <Reveal delay={0.1}>
-          <a
-            href="mailto:apurvsptl@gmail.com"
-            className="block font-serif text-outline leading-none whitespace-nowrap select-none mb-24"
-            style={{ fontSize: "clamp(1.6rem, 5.6vw, 4.8rem)", letterSpacing: "-0.02em" }}
-          >
-            apurvsptl@gmail.com
-          </a>
-        </Reveal>
-
         {/* Footer */}
         <footer className="border-t border-border pt-8 pb-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
