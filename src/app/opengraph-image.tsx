@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Apurv Patil — Operator. Builder. Investor.";
+export const alt = "Apurv Patil — Product · Finance · Manufacturing";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,7 +10,7 @@ export default function Image() {
     (
       <div
         style={{
-          background: "#090909",
+          background: "#0a0908",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -18,7 +18,7 @@ export default function Image() {
           justifyContent: "space-between",
           padding: "0",
           position: "relative",
-          fontFamily: "sans-serif",
+          fontFamily: "Georgia, serif",
         }}
       >
         {/* Top accent bar */}
@@ -29,7 +29,7 @@ export default function Image() {
             left: 0,
             right: 0,
             height: "3px",
-            background: "#c8a87a",
+            background: "#c9a96e",
           }}
         />
 
@@ -46,31 +46,48 @@ export default function Image() {
           {/* Eyebrow */}
           <div
             style={{
-              color: "#c8a87a",
-              fontSize: "13px",
+              color: "#c9a96e",
+              fontSize: "14px",
               letterSpacing: "0.35em",
               textTransform: "uppercase",
               marginBottom: "28px",
               fontWeight: 500,
             }}
           >
-            Finance × Software
+            Product · Finance · Manufacturing
           </div>
 
-          {/* Name */}
+          {/* Name — Satori needs explicit flex on any multi-child div */}
           <div
             style={{
-              color: "#eeebe4",
-              fontSize: "108px",
-              fontWeight: 900,
-              lineHeight: 0.88,
-              letterSpacing: "-0.04em",
-              marginBottom: "32px",
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "36px",
             }}
           >
-            Apurv
-            <br />
-            Patil
+            <div
+              style={{
+                color: "#ece6da",
+                fontSize: "112px",
+                fontWeight: 700,
+                lineHeight: 0.9,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Apurv
+            </div>
+            <div
+              style={{
+                color: "#c9a96e",
+                fontSize: "112px",
+                fontWeight: 700,
+                fontStyle: "italic",
+                lineHeight: 0.95,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Patil
+            </div>
           </div>
 
           {/* Separator + positioning */}
@@ -79,15 +96,16 @@ export default function Image() {
               style={{
                 width: "36px",
                 height: "1px",
-                background: "#c8a87a",
+                background: "#c9a96e",
               }}
             />
             <div
               style={{
-                color: "#7a7a7a",
+                color: "#a59c8f",
                 fontSize: "22px",
                 letterSpacing: "0.05em",
-                fontWeight: 300,
+                fontWeight: 400,
+                fontStyle: "italic",
               }}
             >
               Operator. Builder. Investor.
@@ -102,7 +120,7 @@ export default function Image() {
             alignItems: "center",
             justifyContent: "space-between",
             padding: "20px 88px",
-            borderTop: "1px solid #131313",
+            borderTop: "1px solid #262220",
           }}
         >
           <div
@@ -112,16 +130,15 @@ export default function Image() {
             }}
           >
             {[
-              "Morning Intel Brief",
-              "Reverse DCF Tool",
-              "Options Greeks Viz",
-              "NSE Screener",
+              "Patson Doors",
+              "Polychem Group",
+              "The Mechanics of Reality",
             ].map((name) => (
               <span
                 key={name}
                 style={{
-                  color: "#2e2e2e",
-                  fontSize: "11px",
+                  color: "#635d52",
+                  fontSize: "12px",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   fontWeight: 500,
@@ -133,13 +150,13 @@ export default function Image() {
           </div>
           <div
             style={{
-              color: "#2e2e2e",
-              fontSize: "11px",
+              color: "#635d52",
+              fontSize: "12px",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
             }}
           >
-            apurvpatil.vercel.app
+            www.apurvpatil.com
           </div>
         </div>
       </div>
