@@ -17,13 +17,13 @@ const geistMono = localFont({
 
 const garamond = EB_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-garamond",
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://apurvpatil.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.apurvpatil.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -76,7 +76,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${garamond.variable} ${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased font-sans bg-bg text-text">{children}</body>
+      <body className="antialiased font-sans bg-bg text-text grain">{children}</body>
     </html>
   );
 }
