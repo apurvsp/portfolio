@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Space_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const anton = Anton({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-anton",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-bricolage",
 });
 
-const archivo = Archivo({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-archivo",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
 });
 
-const spaceMono = Space_Mono({
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-spacemono",
+  weight: ["400", "500", "600"],
+  variable: "--font-plexmono",
 });
 
 const siteUrl =
@@ -76,9 +75,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${archivo.variable} ${spaceMono.variable}`}
+      className={`${bricolage.variable} ${manrope.variable} ${plexMono.variable}`}
     >
-      <body className="antialiased font-sans bg-paper text-ink grain">
+      <body className="antialiased font-sans bg-void text-ivory grain">
         {children}
       </body>
     </html>

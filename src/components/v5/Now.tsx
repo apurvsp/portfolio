@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { EASE, FileHead } from "./shared";
+import { EASE, Reveal, SectionLabel } from "./shared";
 
 function Icon({ path, extra }: { path: string; extra?: React.ReactNode }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="w-6 h-6 text-red"
+      className="w-6 h-6 text-cyan"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -25,6 +25,7 @@ interface NowCard {
   title: string;
   body: string;
   icon: React.ReactNode;
+  span?: boolean;
 }
 
 const cards: NowCard[] = [
@@ -37,6 +38,7 @@ const cards: NowCard[] = [
         extra={<path d="M21.5 8h-2" />}
       />
     ),
+    span: true,
   },
   {
     title: "Learning Mandarin",
@@ -88,46 +90,43 @@ const cards: NowCard[] = [
         extra={<path d="M10 8.5l6 3.5-6 3.5v-7z" />}
       />
     ),
+    span: true,
   },
 ];
 
 export default function Now() {
   return (
-    <section
-      id="now"
-      className="relative px-5 md:px-10 py-20 md:py-28 bg-paper2 border-y-2 border-ink"
-    >
-      <div className="max-w-[1280px] mx-auto">
-        <FileHead
-          file="06"
-          label="Updated June 2026"
-          title={
-            <>
-              Currently <span className="text-red">in motion.</span>
-            </>
-          }
-        />
+    <section id="now" className="relative px-6 md:px-14 lg:px-24 py-28 md:py-40">
+      <div className="max-w-[1200px] mx-auto">
+        <SectionLabel num="006" text="Updated June 2026" className="mb-5" />
+        <Reveal>
+          <h2 className="font-display font-extrabold text-ivory tracking-[-0.03em] leading-none text-[clamp(2.4rem,6vw,4.6rem)] mb-16">
+            Currently in motion<span className="text-aurora">.</span>
+          </h2>
+        </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {cards.map((card, i) => (
             <motion.div
               key={card.title}
-              className="group relative bg-paper border-2 border-ink p-6 hover:-translate-y-1.5 hover:shadow-hard transition-all duration-300"
-              initial={{ opacity: 0, y: 22 }}
+              className={`glass glass-hover rounded-3xl p-7 ${
+                card.span ? "lg:col-span-2" : ""
+              }`}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, delay: 0.05 + i * 0.06, ease: EASE }}
+              transition={{ duration: 0.7, delay: 0.05 + i * 0.06, ease: EASE }}
             >
-              <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center justify-between mb-6">
                 {card.icon}
-                <span className="font-mono text-[9px] font-bold tracking-[0.25em] text-ink3 group-hover:text-red transition-colors duration-300">
+                <span className="font-mono text-[9px] tracking-[0.3em] text-dim">
                   N·{String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h3 className="text-[18px] font-extrabold text-ink mb-2.5 leading-snug uppercase tracking-[0.01em]">
+              <h3 className="font-display font-bold text-[19px] text-ivory mb-2.5 leading-snug tracking-[-0.01em]">
                 {card.title}
               </h3>
-              <p className="text-[14px] text-ink2 leading-[1.7]">{card.body}</p>
+              <p className="text-[14px] text-mist leading-[1.75]">{card.body}</p>
             </motion.div>
           ))}
         </div>
