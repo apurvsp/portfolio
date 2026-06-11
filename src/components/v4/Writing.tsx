@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Reader from "./Reader";
 import { articles, ArticleData } from "@/data/articles";
-import { EASE, Reveal, SectionHead } from "./shared";
+import { EASE, FileHead, Reveal } from "./shared";
 
 interface WritingRow {
   title: string;
@@ -67,7 +67,7 @@ function EssayRow({
 
   return (
     <motion.div
-      className={`group border-b border-border ${
+      className={`group border-b border-paper/20 ${
         readable ? "cursor-pointer" : ""
       }`}
       initial={{ opacity: 0, y: 18 }}
@@ -76,41 +76,38 @@ function EssayRow({
       transition={{ duration: 0.7, delay: 0.04 + i * 0.06, ease: EASE }}
       onClick={() => readable && onRead(row.articleId!)}
     >
-      <div className="py-9 md:py-10 grid grid-cols-1 md:grid-cols-[56px_1fr_auto] gap-4 md:gap-8 items-baseline relative">
-        {/* Hover sheen */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(201,169,110,0.04)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-        <span className="hidden md:block font-serif italic text-[20px] text-text3">
+      <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-[64px_1fr_auto] gap-4 md:gap-8 items-center relative">
+        <span className="hidden md:block font-display text-[30px] leading-none text-paper/25 group-hover:text-red transition-colors duration-300">
           {String(i + 1).padStart(2, "0")}
         </span>
 
         <div>
           <h3
-            className={`font-serif leading-[1.15] tracking-[-0.01em] mb-3 transition-colors duration-300 ${
+            className={`font-display uppercase leading-[1.02] tracking-[0.01em] mb-3 transition-colors duration-300 ${
               readable
-                ? "text-text group-hover:text-gold"
-                : "text-text3"
+                ? "text-paper group-hover:text-red"
+                : "text-paper/35"
             }`}
-            style={{ fontSize: "clamp(1.35rem, 2.6vw, 1.9rem)" }}
+            style={{ fontSize: "clamp(1.45rem, 3vw, 2.4rem)" }}
           >
             {row.title}
           </h3>
-          <p className="font-mono text-[9.5px] uppercase tracking-[0.25em] text-text3">
+          <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] text-paper/45">
             {row.meta}
-            {rt && <span className="text-gold2"> · {rt}</span>}
+            {rt && <span className="text-red"> · {rt}</span>}
           </p>
         </div>
 
         <div className="md:text-right">
           {readable ? (
-            <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-gold">
+            <span className="inline-flex items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-paper border-2 border-paper/40 px-4 py-2.5 group-hover:bg-red group-hover:border-red group-hover:text-ink transition-all duration-300">
               Read
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
             </span>
           ) : (
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-text3 border border-border2 px-2.5 py-1">
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/40 border border-dashed border-paper/30 px-3 py-2">
               Soon
             </span>
           )}
@@ -132,15 +129,16 @@ export default function Writing() {
     <>
       <section
         id="writing"
-        className="relative px-6 md:px-14 lg:px-24 xl:px-32 py-24 md:py-36 bg-surface border-y border-border"
+        className="relative px-5 md:px-10 py-20 md:py-28 bg-ink text-paper"
       >
-        <div className="max-w-[1100px] mx-auto">
-          <SectionHead
-            num="05"
+        <div className="max-w-[1280px] mx-auto">
+          <FileHead
+            dark
+            file="05"
             label="Writing & Content"
             title={
               <>
-                Essays &amp; <em className="italic text-gold">teardowns.</em>
+                The reading <span className="text-red">room.</span>
               </>
             }
             lede="Opinionated long-form writing on product strategy, manufacturing, and capital allocation. Not sponsored content."
@@ -148,10 +146,10 @@ export default function Writing() {
 
           <Reveal y={10}>
             <div className="flex items-center gap-4 mb-2">
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold whitespace-nowrap">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-red whitespace-nowrap">
                 Product Breakdowns &amp; Essays
               </span>
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-px bg-paper/25" />
             </div>
           </Reveal>
           {productEssays.map((row, i) => (
@@ -160,10 +158,10 @@ export default function Writing() {
 
           <Reveal y={10} className="mt-16">
             <div className="flex items-center gap-4 mb-2">
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold whitespace-nowrap">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-red whitespace-nowrap">
                 Investment Essays
               </span>
-              <div className="flex-1 h-px bg-border" />
+              <div className="flex-1 h-px bg-paper/25" />
             </div>
           </Reveal>
           {investmentEssays.map((row, i) => (

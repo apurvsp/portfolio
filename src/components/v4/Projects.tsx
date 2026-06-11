@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { EASE, Reveal, SectionHead } from "./shared";
+import { EASE, FileHead, Reveal } from "./shared";
 
 interface Project {
   type: string;
@@ -81,11 +81,13 @@ const softwareProjects: Project[] = [
   },
 ];
 
-function LedgerGroup({
+function SpecGroup({
+  group,
   label,
   projects,
   startIndex,
 }: {
+  group: string;
   label: string;
   projects: Project[];
   startIndex: number;
@@ -93,97 +95,110 @@ function LedgerGroup({
   return (
     <div className="mb-16 last:mb-0">
       <Reveal y={10}>
-        <div className="flex items-center gap-4 mb-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-gold whitespace-nowrap">
+        <div className="flex items-stretch border-2 border-ink bg-paper mb-0">
+          <span className="px-3 py-2 bg-red text-paper font-display text-[16px] tracking-wide">
+            {group}
+          </span>
+          <span className="px-4 py-2 self-center font-mono text-[10px] font-bold uppercase tracking-[0.35em]">
             {label}
           </span>
-          <div className="flex-1 h-px bg-border" />
-          <span className="font-mono text-[9px] tracking-[0.2em] text-text3">
+          <span className="ml-auto px-4 py-2 self-center font-mono text-[9px] tracking-[0.2em] text-ink3">
             {String(projects.length).padStart(2, "0")} ENTRIES
           </span>
         </div>
       </Reveal>
 
-      {projects.map((p, i) => (
-        <motion.article
-          key={p.name}
-          className="group border-b border-border py-8 grid grid-cols-1 md:grid-cols-[64px_170px_1fr_70px] gap-3 md:gap-8 items-start hover:bg-[rgba(201,169,110,0.02)] transition-colors duration-400"
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.04 + i * 0.05, ease: EASE }}
-        >
-          <span className="font-serif italic text-[22px] text-text3 leading-none pt-1 hidden md:block">
-            {String(startIndex + i + 1).padStart(2, "0")}
-          </span>
+      <div className="border-2 border-t-0 border-ink">
+        {projects.map((p, i) => (
+          <motion.article
+            key={p.name}
+            className="group relative border-b border-line-soft last:border-b-0 py-7 px-4 md:px-6 grid grid-cols-1 md:grid-cols-[56px_170px_1fr_70px] gap-3 md:gap-8 items-start hover:bg-paper2 transition-colors duration-300"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, delay: 0.04 + i * 0.05, ease: EASE }}
+          >
+            {/* Red index bar on hover */}
+            <span
+              aria-hidden="true"
+              className="absolute left-0 top-0 bottom-0 w-[4px] bg-red scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-400"
+            />
 
-          <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-text3 leading-[1.8] pt-1.5 hidden md:block">
-            {p.type}
-          </span>
-
-          <div>
-            <span className="md:hidden font-mono text-[9px] uppercase tracking-[0.2em] text-text3 block mb-2">
-              {String(startIndex + i + 1).padStart(2, "0")} · {p.type} · {p.year}
+            <span className="hidden md:block font-display text-[26px] leading-none text-outline-soft group-hover:text-outline-ink transition-all duration-400 pt-0.5">
+              {String(startIndex + i + 1).padStart(2, "0")}
             </span>
-            <h3 className="font-serif text-[20px] md:text-[22px] text-text leading-tight mb-3 group-hover:text-gold transition-colors duration-300">
-              {p.name}
-            </h3>
-            <p className="font-serif text-[15px] text-text2 leading-[1.78] mb-4 max-w-[640px]">
-              {p.description}
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {p.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[8.5px] px-2 py-[3px] border border-border2 text-text3 uppercase tracking-[0.12em]"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
 
-          <span className="font-mono text-[10px] text-text3 md:text-right pt-1.5 hidden md:block">
-            {p.year}
-          </span>
-        </motion.article>
-      ))}
+            <span className="hidden md:block font-mono text-[9px] uppercase tracking-[0.14em] text-ink3 leading-[1.8] pt-1.5">
+              {p.type}
+            </span>
+
+            <div>
+              <span className="md:hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ink3 block mb-2">
+                {String(startIndex + i + 1).padStart(2, "0")} · {p.type} ·{" "}
+                {p.year}
+              </span>
+              <h3 className="text-[18px] md:text-[20px] font-extrabold text-ink leading-tight mb-2.5 group-hover:text-red transition-colors duration-300">
+                {p.name}
+              </h3>
+              <p className="text-[14.5px] text-ink2 leading-[1.7] mb-4 max-w-[660px]">
+                {p.description}
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {p.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-[8.5px] px-2 py-[3px] border border-ink/35 text-ink2 uppercase tracking-[0.12em]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <span className="hidden md:block font-mono text-[10px] text-ink3 md:text-right pt-1.5">
+              {p.year}
+            </span>
+          </motion.article>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative px-6 md:px-14 lg:px-24 xl:px-32 py-24 md:py-36">
-      <div className="max-w-[1100px] mx-auto">
-        <SectionHead
-          num="04"
+    <section id="projects" className="relative px-5 md:px-10 py-20 md:py-28">
+      <div className="max-w-[1280px] mx-auto">
+        <FileHead
+          file="04"
           label="Built Work"
           title={
             <>
-              The <em className="italic text-gold">workbench.</em>
+              The <span className="text-red">workbench.</span>
             </>
           }
           lede="A selection of financial models, software tools, and product work built across professional roles, personal experiments, and family business contexts."
         />
 
-        <LedgerGroup
+        <SpecGroup
+          group="A"
           label="Financial Modelling"
           projects={financialProjects}
           startIndex={0}
         />
-        <LedgerGroup
+        <SpecGroup
+          group="B"
           label="Software & Tools"
           projects={softwareProjects}
           startIndex={financialProjects.length}
         />
 
-        <Reveal className="mt-12" y={10}>
-          <p className="font-serif text-[15px] text-text3 leading-relaxed italic">
+        <Reveal className="mt-10" y={10}>
+          <p className="text-[14.5px] text-ink2 leading-relaxed">
             Interested in any of these?{" "}
             <a
               href="mailto:apurvsptl@gmail.com"
-              className="text-gold link-draw not-italic"
+              className="font-bold text-red link-draw"
             >
               Reach out
             </a>{" "}

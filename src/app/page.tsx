@@ -1,26 +1,27 @@
-import Chrome from "@/components/site/Chrome";
-import Hero from "@/components/site/Hero";
-import Ticker from "@/components/site/Ticker";
-import About from "@/components/site/About";
-import Ventures from "@/components/site/Ventures";
-import Projects from "@/components/site/Projects";
-import Writing from "@/components/site/Writing";
-import Now from "@/components/site/Now";
-import Connect from "@/components/site/Connect";
+import Nav from "@/components/v4/Nav";
+import Hero from "@/components/v4/Hero";
+import Marquee from "@/components/v4/Marquee";
+import About from "@/components/v4/About";
+import Ventures from "@/components/v4/Ventures";
+import Projects from "@/components/v4/Projects";
+import Writing from "@/components/v4/Writing";
+import Now from "@/components/v4/Now";
+import Contact from "@/components/v4/Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-bg">
-      <Chrome />
+    <div className="relative min-h-screen bg-paper">
+      <Nav />
       <main>
         <Hero />
-        <Ticker />
+        <Marquee variant="red" />
         <About />
         <Ventures />
         <Projects />
         <Writing />
         <Now />
-        <Connect />
+        <Marquee variant="ink" />
+        <Contact />
       </main>
     </div>
   );

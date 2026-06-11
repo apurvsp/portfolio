@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { EB_Garamond } from "next/font/google";
+import { Anton, Archivo, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-const garamond = EB_Garamond({
+const anton = Anton({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
+  variable: "--font-anton",
+});
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
-  variable: "--font-garamond",
+  variable: "--font-archivo",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-spacemono",
 });
 
 const siteUrl =
@@ -75,8 +74,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${garamond.variable} ${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased font-sans bg-bg text-text grain">{children}</body>
+    <html
+      lang="en"
+      className={`${anton.variable} ${archivo.variable} ${spaceMono.variable}`}
+    >
+      <body className="antialiased font-sans bg-paper text-ink grain">
+        {children}
+      </body>
     </html>
   );
 }
