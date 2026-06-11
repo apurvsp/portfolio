@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Manrope, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { EB_Garamond } from "next/font/google";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-bricolage",
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
 });
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
 });
 
-const plexMono = IBM_Plex_Mono({
+const garamond = EB_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plexmono",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-garamond",
 });
 
 const siteUrl =
@@ -73,13 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${bricolage.variable} ${manrope.variable} ${plexMono.variable}`}
-    >
-      <body className="antialiased font-sans bg-void text-ivory grain">
-        {children}
-      </body>
+    <html lang="en" className={`${garamond.variable} ${geistSans.variable} ${geistMono.variable}`}>
+      <body className="antialiased font-sans bg-bg text-text grain">{children}</body>
     </html>
   );
 }

@@ -4,21 +4,18 @@
 
 :root {
   color-scheme: dark;
-  --void: #07060b;
-  --void2: #0d0b14;
-  --bone: #ece8de;
-  --bone2: #e2ddd0;
-  --ivory: #f1eee7;
-  --mist: #a39fb2;
-  --dim: #5e5a6e;
-  --violet: #7c5dfa;
-  --violet-bright: #a18bff;
-  --cyan: #6fe3ff;
-  --magenta: #ff5ca8;
-  --line: rgba(241, 238, 231, 0.1);
-  --line2: rgba(241, 238, 231, 0.22);
-  --linedark: rgba(7, 6, 11, 0.14);
-  --linedark2: rgba(7, 6, 11, 0.32);
+  --bg: #0a0908;
+  --surface: #110f0d;
+  --surface2: #181512;
+  --border: #262220;
+  --border2: #36302a;
+  --text: #ece6da;
+  --text2: #a59c8f;
+  --text3: #635d52;
+  --gold: #c9a96e;
+  --gold-bright: #e6cd96;
+  --gold2: #97793f;
+  --green: #5d8a6b;
 }
 
 html {
@@ -26,74 +23,54 @@ html {
 }
 
 body {
-  background-color: var(--void);
-  color: var(--ivory);
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Hide the system cursor where the custom cursor takes over */
-@media (hover: hover) and (pointer: fine) {
-  body.custom-cursor,
-  body.custom-cursor a,
-  body.custom-cursor button {
-    cursor: none;
-  }
-}
-
 ::selection {
-  background-color: var(--violet);
-  color: var(--ivory);
+  background-color: rgba(201, 169, 110, 0.28);
+  color: var(--text);
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--void);
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2738;
-  border-radius: 3px;
+  background: var(--border2);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--violet);
+  background: var(--gold2);
 }
 
-/* ── Film grain ───────────────────────────── */
+/* ── Paper texture (static — no motion) ───── */
 .grain::after {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 300;
+  z-index: 200;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.035;
+  opacity: 0.022;
 }
 
-/* ── Aurora orbs (transform-only animation) ─ */
-@keyframes drift-a {
-  0% { transform: translate(-12%, -8%) scale(1); }
-  50% { transform: translate(14%, 10%) scale(1.18); }
-  100% { transform: translate(-12%, -8%) scale(1); }
+/* ── Marquee ticker ───────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-@keyframes drift-b {
-  0% { transform: translate(10%, 12%) scale(1.1); }
-  50% { transform: translate(-14%, -6%) scale(0.92); }
-  100% { transform: translate(10%, 12%) scale(1.1); }
+.animate-marquee {
+  animation: marquee 36s linear infinite;
 }
-@keyframes drift-c {
-  0% { transform: translate(-6%, 10%) scale(0.95); }
-  50% { transform: translate(8%, -12%) scale(1.15); }
-  100% { transform: translate(-6%, 10%) scale(0.95); }
-}
-.aurora-a { animation: drift-a 26s ease-in-out infinite; }
-.aurora-b { animation: drift-b 32s ease-in-out infinite; }
-.aurora-c { animation: drift-c 38s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) {
-  .aurora-a, .aurora-b, .aurora-c { animation: none; }
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 /* ── Status pulse ─────────────────────────── */
@@ -106,57 +83,44 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 9999px;
-  background: var(--cyan);
+  background: var(--green);
   animation: status-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* ── Outlined display text ────────────────── */
+/* ── Typography helpers ───────────────────── */
+.text-balance {
+  text-wrap: balance;
+}
+.font-serif {
+  font-family: var(--font-garamond), Georgia, serif;
+}
+
+/* Outlined display text */
 .text-outline {
-  -webkit-text-stroke: 1px var(--line2);
+  -webkit-text-stroke: 1px var(--border2);
   color: transparent;
+  transition: color 0.5s ease, -webkit-text-stroke-color 0.5s ease;
 }
-.text-outline-bone {
-  -webkit-text-stroke: 1px var(--linedark2);
-  color: transparent;
-}
-
-/* ── Gradient ink for display type ────────── */
-.text-aurora {
-  background: linear-gradient(100deg, var(--violet-bright) 0%, var(--cyan) 55%, var(--violet-bright) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.text-outline:hover {
+  -webkit-text-stroke: 1px var(--gold);
+  color: rgba(201, 169, 110, 0.12);
 }
 
-/* ── Glass panel ──────────────────────────── */
-.glass {
-  background: linear-gradient(160deg, rgba(241, 238, 231, 0.05), rgba(241, 238, 231, 0.015));
-  border: 1px solid var(--line);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-.glass-hover {
-  transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-hover:hover {
-  border-color: rgba(124, 93, 250, 0.55);
-  box-shadow: 0 0 60px rgba(124, 93, 250, 0.18), inset 0 0 30px rgba(124, 93, 250, 0.05);
+/* Drop cap for editorial paragraphs */
+.dropcap::first-letter {
+  font-family: var(--font-garamond), Georgia, serif;
+  float: left;
+  font-size: 3.9em;
+  line-height: 0.82;
+  padding-right: 0.12em;
+  padding-top: 0.06em;
+  color: var(--gold);
+  font-weight: 500;
 }
 
-/* ── Photo treatment: muted noir → color ──── */
-.photo-noir img {
-  filter: saturate(0.25) contrast(1.05) brightness(0.92);
-  transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.photo-noir:hover img {
-  filter: saturate(1) contrast(1) brightness(1);
-  transform: scale(1.045);
-}
-
-/* ── Link underline draw ──────────────────── */
+/* Link underline draw */
 .link-draw {
-  background-image: linear-gradient(var(--violet-bright), var(--violet-bright));
+  background-image: linear-gradient(var(--gold), var(--gold));
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -166,13 +130,15 @@ body {
   background-size: 100% 1px;
 }
 
-/* ── Reader scrollbar ─────────────────────── */
+/* Photo treatment — original colors, gentle grow on hover */
+.photo-tone img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.photo-tone:hover img {
+  transform: scale(1.045);
+}
+
+/* Reader scrollbar slightly wider */
 .reader-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-.reader-scroll::-webkit-scrollbar-track {
-  background: var(--bone);
-}
-.reader-scroll::-webkit-scrollbar-thumb {
-  background: var(--linedark2);
+  width: 5px;
 }

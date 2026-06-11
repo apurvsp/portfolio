@@ -10,139 +10,105 @@ export default function Image() {
     (
       <div
         style={{
-          background: "#07060b",
+          background: "#0a0908",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          padding: "0",
           position: "relative",
-          fontFamily: "sans-serif",
-          overflow: "hidden",
+          fontFamily: "Georgia, serif",
         }}
       >
-        {/* Aurora glows */}
+        {/* Top accent bar */}
         <div
           style={{
             position: "absolute",
-            width: "700px",
-            height: "700px",
-            borderRadius: "9999px",
-            left: "-180px",
-            top: "-260px",
-            background:
-              "radial-gradient(circle, rgba(124,93,250,0.4) 0%, rgba(124,93,250,0) 65%)",
-            display: "flex",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: "600px",
-            height: "600px",
-            borderRadius: "9999px",
-            right: "-160px",
-            bottom: "-240px",
-            background:
-              "radial-gradient(circle, rgba(111,227,255,0.25) 0%, rgba(111,227,255,0) 65%)",
-            display: "flex",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "3px",
+            background: "#c9a96e",
           }}
         />
 
-        {/* Top strip */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "44px 72px 0 72px",
-          }}
-        >
-          <div
-            style={{
-              color: "#a39fb2",
-              fontSize: "15px",
-              letterSpacing: "0.4em",
-              textTransform: "uppercase",
-              display: "flex",
-            }}
-          >
-            001 — Signal
-          </div>
-          <div
-            style={{
-              color: "#6fe3ff",
-              fontSize: "14px",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              display: "flex",
-            }}
-          >
-            ● Available
-          </div>
-        </div>
-
-        {/* Name */}
+        {/* Main content */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            padding: "0 72px",
+            justifyContent: "flex-end",
+            flex: 1,
+            padding: "72px 88px",
           }}
         >
+          {/* Eyebrow */}
           <div
             style={{
-              color: "#f1eee7",
-              fontSize: "150px",
-              fontWeight: 800,
-              lineHeight: 0.95,
-              letterSpacing: "-0.045em",
-              display: "flex",
+              color: "#c9a96e",
+              fontSize: "14px",
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
+              marginBottom: "28px",
+              fontWeight: 500,
             }}
           >
-            Apurv
+            Product · Finance · Manufacturing
           </div>
-          <div
-            style={{
-              fontSize: "150px",
-              fontWeight: 800,
-              lineHeight: 0.95,
-              letterSpacing: "-0.045em",
-              backgroundImage:
-                "linear-gradient(100deg, #a18bff 0%, #6fe3ff 60%, #a18bff 100%)",
-              backgroundClip: "text",
-              color: "transparent",
-              display: "flex",
-            }}
-          >
-            Patil
-          </div>
+
+          {/* Name — Satori needs explicit flex on any multi-child div */}
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: "18px",
-              marginTop: "34px",
+              flexDirection: "column",
+              marginBottom: "36px",
             }}
           >
             <div
               style={{
-                width: "48px",
-                height: "2px",
-                background: "linear-gradient(90deg, #7c5dfa, #6fe3ff)",
-                display: "flex",
+                color: "#ece6da",
+                fontSize: "112px",
+                fontWeight: 700,
+                lineHeight: 0.9,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Apurv
+            </div>
+            <div
+              style={{
+                color: "#c9a96e",
+                fontSize: "112px",
+                fontWeight: 700,
+                fontStyle: "italic",
+                lineHeight: 0.95,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              Patil
+            </div>
+          </div>
+
+          {/* Separator + positioning */}
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <div
+              style={{
+                width: "36px",
+                height: "1px",
+                background: "#c9a96e",
               }}
             />
             <div
               style={{
-                color: "#a39fb2",
+                color: "#a59c8f",
                 fontSize: "22px",
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                display: "flex",
+                letterSpacing: "0.05em",
+                fontWeight: 400,
+                fontStyle: "italic",
               }}
             >
-              Operator · Builder · Investor
+              Operator. Builder. Investor.
             </div>
           </div>
         </div>
@@ -153,37 +119,44 @@ export default function Image() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            padding: "24px 72px 40px 72px",
-            borderTop: "1px solid rgba(241,238,231,0.12)",
+            padding: "20px 88px",
+            borderTop: "1px solid #262220",
           }}
         >
-          <div style={{ display: "flex", gap: "30px" }}>
-            {["Patson Doors", "Polychem Group", "Mechanics of Reality"].map(
-              (name) => (
-                <span
-                  key={name}
-                  style={{
-                    color: "#5e5a6e",
-                    fontSize: "13px",
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {name}
-                </span>
-              )
-            )}
+          <div
+            style={{
+              display: "flex",
+              gap: "32px",
+            }}
+          >
+            {[
+              "Patson Doors",
+              "Polychem Group",
+              "The Mechanics of Reality",
+            ].map((name) => (
+              <span
+                key={name}
+                style={{
+                  color: "#635d52",
+                  fontSize: "12px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  fontWeight: 500,
+                }}
+              >
+                {name}
+              </span>
+            ))}
           </div>
           <div
             style={{
-              color: "#a18bff",
-              fontSize: "13px",
+              color: "#635d52",
+              fontSize: "12px",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              display: "flex",
             }}
           >
-            apurvpatil.com
+            www.apurvpatil.com
           </div>
         </div>
       </div>

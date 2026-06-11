@@ -1,47 +1,26 @@
-import Preloader from "@/components/v5/Preloader";
-import Cursor from "@/components/v5/Cursor";
-import Nav from "@/components/v5/Nav";
-import Hero from "@/components/v5/Hero";
-import VelocityMarquee from "@/components/v5/VelocityMarquee";
-import Manifesto from "@/components/v5/Manifesto";
-import Stats from "@/components/v5/Stats";
-import Ventures from "@/components/v5/Ventures";
-import Projects from "@/components/v5/Projects";
-import Writing from "@/components/v5/Writing";
-import Now from "@/components/v5/Now";
-import Contact from "@/components/v5/Contact";
-
-const domains = [
-  "M&A",
-  "Private Equity",
-  "Manufacturing",
-  "Financial Modelling",
-  "NSE Equities",
-  "Product",
-  "Software Tools",
-  "Family Business",
-  "US Market Entry",
-  "AI Tooling",
-];
+import Chrome from "@/components/site/Chrome";
+import Hero from "@/components/site/Hero";
+import Ticker from "@/components/site/Ticker";
+import About from "@/components/site/About";
+import Ventures from "@/components/site/Ventures";
+import Projects from "@/components/site/Projects";
+import Writing from "@/components/site/Writing";
+import Now from "@/components/site/Now";
+import Connect from "@/components/site/Connect";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-void">
-      <Preloader />
-      <Cursor />
-      <Nav />
+    <div className="relative min-h-screen bg-bg">
+      <Chrome />
       <main>
         <Hero />
-        <div className="border-y border-line">
-          <VelocityMarquee items={domains} />
-        </div>
-        <Manifesto />
-        <Stats />
+        <Ticker />
+        <About />
         <Ventures />
         <Projects />
         <Writing />
         <Now />
-        <Contact />
+        <Connect />
       </main>
     </div>
   );
