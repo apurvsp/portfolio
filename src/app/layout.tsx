@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { EB_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -76,7 +77,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${garamond.variable} ${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased font-sans bg-bg text-text grain">{children}</body>
+      <body className="antialiased font-sans bg-bg text-text grain">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
