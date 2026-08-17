@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { EASE, Reveal } from "./shared";
+import ToptalBadge from "./ToptalBadge";
 
 function useClock(timeZone: string) {
   const [time, setTime] = useState("--:--");
@@ -162,14 +163,17 @@ export default function Connect() {
             <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-text3">
               © 2026 Apurv Patil — All rights reserved
             </span>
-            <button
-              onClick={() =>
-                document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="font-mono text-[9px] uppercase tracking-[0.25em] text-text3 hover:text-gold transition-colors duration-300"
-            >
-              Back to top ↑
-            </button>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() =>
+                  document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="font-mono text-[9px] uppercase tracking-[0.25em] text-text3 hover:text-gold transition-colors duration-300"
+              >
+                Back to top ↑
+              </button>
+              <ToptalBadge />
+            </div>
           </div>
         </footer>
       </div>
